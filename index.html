@@ -3,45 +3,354 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Water Landing Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>charity: water - From Your Phone to Their Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for Brand Colors */
+        :root {
+            --jerry-can-yellow: #FFC107;
+            --navy-blue: #003057;
+            --teal: #7EB6BF;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+        }
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Proxima Nova', Arial, sans-serif;
+            color: var(--navy-blue);
+            line-height: 1.6;
+        }
+
+        /* Header Section */
+        header {
+            background-color: var(--navy-blue);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+
+        .cta-button-header {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button-header:hover {
+            background-color: var(--white);
+            color: var(--navy-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 85vh;
+            background-color: var(--navy-blue);
+        }
+
+        .hero-image {
+            background-image: url('img/IMG_4068.jpeg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        /* Placeholder for hero image */
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #006994 0%, #7EB6BF 100%);
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            background-color: var(--navy-blue);
+            padding: 80px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            color: var(--white);
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        .hero-content p {
+            color: var(--white);
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 40px;
+            max-width: 540px;
+        }
+
+        /* Yellow Diagonal Accent */
+        .yellow-accent {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 200px;
+            background: var(--jerry-can-yellow);
+            clip-path: polygon(0 100%, 100% 0, 100% 100%);
+        }
+
+        /* CTA Button */
+        .cta-button {
+            background-color: var(--white);
+            color: var(--navy-blue);
+            border: none;
+            padding: 18px 48px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 30px;
+            cursor: pointer;
+            align-self: flex-start;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            background-color: var(--jerry-can-yellow);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Impact Section */
+        .impact-section {
+            background-color: var(--white);
+            padding: 80px 60px;
+            text-align: center;
+        }
+
+        .impact-section h2 {
+            color: var(--navy-blue);
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .impact-section p {
+            color: var(--navy-blue);
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            line-height: 1.8;
+        }
+
+        /* Stats Container */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .stat-box {
+            background-color: var(--light-gray);
+            padding: 40px 30px;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            color: var(--jerry-can-yellow);
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .stat-label {
+            color: var(--navy-blue);
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* Transparency Section */
+        .transparency-section {
+            background-color: var(--teal);
+            padding: 80px 60px;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .transparency-section h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .transparency-section p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Footer CTA Section */
+        .footer-cta {
+            background-color: var(--jerry-can-yellow);
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .footer-cta h2 {
+            color: var(--navy-blue);
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .cta-button-footer {
+            background-color: var(--navy-blue);
+            color: var(--white);
+            border: none;
+            padding: 18px 48px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button-footer:hover {
+            background-color: var(--white);
+            color: var(--navy-blue);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image {
+                min-height: 300px;
+            }
+
+            .hero-content {
+                padding: 40px 30px;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .impact-section,
+            .transparency-section,
+            .footer-cta {
+                padding: 50px 30px;
+            }
+
+            .impact-section h2,
+            .transparency-section h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Hero Section: This is the main banner at the top of the page -->
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <img src="img/cw_logo.png" alt="charity: water logo" class="logo-image">
+        </div>
+        <button class="cta-button-header">Free Trial</button>
+    </header>
+
+    <!-- Hero Section -->
     <section class="hero">
-        <!-- Main headline -->
-        <h1>Clean Water for Everyone</h1>
-        <!-- Subheadline -->
-        <p>Join us in bringing safe, clean water to communities in need.</p>
-    </section>
-
-    <!-- Story Section: This tells the story of the nonprofit -->
-    <section class="story">
-        <h2>Our Story</h2>
-        <p>
-         
-    </section>
-
-    <!-- Real-World Impact Story Section -->
-    <section class="impact-story">
-        <!-- Section headline -->
-        <h2>Real Impact: Meet Amina</h2>
-        <!-- Container for image and text -->
-        <div class="impact-content">
-            <!-- Impact image -->
-            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Amina smiling with clean water" class="impact-image">
-            <!-- Impact story text -->
-            <p>
-                Amina used to walk miles every day to collect water for her family. Thanks to your support, her village now has a clean water well. Amina can go to school and her family is healthier and happier.
-            </p>
+        <div class="hero-image"></div>
+        <div class="hero-content">
+            <h1>From Your Phone to Their Home</h1>
+            <p>A tap on your screen becomes a well in their village, GPS coordinates prove your impact crossed oceans, and technology turns your compassion into clean water that flows for generations.</p>
+            <button class="cta-button" onclick="window.location.href='https://www.charitywater.org/donate'">Click here to donate</button>
+            <div class="yellow-accent"></div>
         </div>
     </section>
 
-    <!-- Call-to-Action Section: This encourages visitors to take action -->
-    <section class="call-to-action">
-        <h2>Make a Difference</h2>
-        <p>Your support can help save lives. Every donation brings us closer to a world with clean water for all.</p>
-        <a href="#" class="donate-button">Donate Now</a>
+    <!-- Impact Section -->
+    <section class="impact-section">
+        <h2>Your Impact, Tracked & Transparent</h2>
+        <p>Every dollar you give directly funds clean water projects. With GPS tracking and photo proof, you'll see exactly where your donation went and who it helped.</p>
+        
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-number">785M</div>
+                <div class="stat-label">People lack clean water</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Of donations fund projects</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">17M+</div>
+                <div class="stat-label">People served globally</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transparency Section -->
+    <section class="transparency-section">
+        <h2>Transparency You Can Trust</h2>
+        <p>charity: water makes giving back effortless, accountable, and aligned with your values. Every project is tracked with GPS coordinates, photos, and completion reports so you can see the real-world impact of your contribution.</p>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="footer-cta">
+        <h2>Start Making a Difference Today</h2>
+        <button class="cta-button-footer" onclick="window.location.href='https://www.charitywater.org/donate'">Donate Now</button>
     </section>
 </body>
 </html>
